@@ -1,6 +1,3 @@
-from distutils.command.build import build
-
-
 def greet_user():
     print("Hello")
 
@@ -79,3 +76,40 @@ while True:
         break
 
     print(get_formatted_name(f_name, l_name))
+
+# pass list to function
+    
+unprinted_designs = ['phone case', 'robot pendant', 'dodecahedron']
+completed_models = []
+
+def print_models(unprinted_designs, completed_models):
+    while unprinted_designs:
+        current_item = unprinted_designs.pop(0)
+        print(f"Printing { current_item }")
+        completed_models.append(current_item)
+
+def show_completed_models(completed_models):
+    print(f"The completed models are: { completed_models }. ")
+
+
+print_models(unprinted_designs, completed_models)
+show_completed_models(completed_models)
+
+# pass a copy of a list so original list doesn't get modified
+
+game_consoles = ["nintendo", "xbox", "playstation"]
+
+def do_something(game_consoles):
+    game_consoles = ["pc"]
+    return game_consoles
+
+print(do_something(game_consoles[:])) # use a slice to pass copy
+print(game_consoles)
+
+# pass arbitrary number of arguments (the asterisk makes a tuple containg all the values it recieveds)
+
+def make_pizza(*toppings):
+    print(toppings)
+
+make_pizza("pepperoni")
+make_pizza("pepperoni", "green olives")
